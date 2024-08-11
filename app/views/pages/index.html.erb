@@ -1,0 +1,10 @@
+<div class="flex">
+  <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'p-2 h-2 bg-red rounded-md' %>
+  <%= turbo_stream_from "online_users", channel: OnlineChannel %>
+
+  <div id="online_users" class="">
+    <% @online_users.each do |user| %>
+      <%= render 'users/card', user: user %>
+    <% end %>
+  </div>
+</div>
